@@ -90,8 +90,11 @@ class StackedRouter extends _i1.RouterBase {
       );
     },
     _i6.TextFormView: (data) {
+      final args = data.getArgs<TextFormViewArguments>(
+        orElse: () => const TextFormViewArguments(),
+      );
       return _i7.MaterialPageRoute<dynamic>(
-        builder: (context) => _i6.TextFormView(),
+        builder: (context) => _i6.TextFormView(key: args.key),
         settings: data,
         maintainState: false,
       );
@@ -102,6 +105,17 @@ class StackedRouter extends _i1.RouterBase {
   List<_i1.RouteDef> get routes => _routes;
   @override
   Map<Type, _i1.StackedRouteFactory> get pagesMap => _pagesMap;
+}
+
+class TextFormViewArguments {
+  const TextFormViewArguments({this.key});
+
+  final _i7.Key? key;
+
+  @override
+  String toString() {
+    return '{"key": "$key"}';
+  }
 }
 
 extension NavigatorStateExtension on _i8.NavigationService {
@@ -161,14 +175,16 @@ extension NavigatorStateExtension on _i8.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> navigateToTextFormView([
+  Future<dynamic> navigateToTextFormView({
+    _i7.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return navigateTo<dynamic>(Routes.textFormView,
+        arguments: TextFormViewArguments(key: key),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -231,14 +247,16 @@ extension NavigatorStateExtension on _i8.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> replaceWithTextFormView([
+  Future<dynamic> replaceWithTextFormView({
+    _i7.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return replaceWith<dynamic>(Routes.textFormView,
+        arguments: TextFormViewArguments(key: key),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
