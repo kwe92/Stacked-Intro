@@ -8,6 +8,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import 'package:stacked_counter_app/ui/views/text_form/text_form_view.dart';
 
 const String TextFormValueKey = 'textForm';
 
@@ -17,7 +18,7 @@ final Map<String, TextEditingController> _TextFormViewTextEditingControllers =
 final Map<String, FocusNode> _TextFormViewFocusNodes = {};
 
 final Map<String, String? Function(String?)?> _TextFormViewTextValidations = {
-  TextFormValueKey: null,
+  TextFormValueKey: TextFormValidators.valifdateText,
 };
 
 mixin $TextFormView on StatelessWidget {
