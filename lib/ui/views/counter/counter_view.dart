@@ -4,6 +4,9 @@ import 'package:stacked/stacked.dart';
 import 'counter_viewmodel.dart';
 
 class CounterView extends StackedView<CounterViewModel> {
+  static const incrementButtonKey = Key('incrementButton');
+  static const decrementButtonKey = Key('DecrementButton');
+
   const CounterView({Key? key}) : super(key: key);
 
   @override
@@ -27,10 +30,12 @@ class CounterView extends StackedView<CounterViewModel> {
             ),
             gapH,
             _IncrementButton(
+              key: CounterView.incrementButtonKey,
               onPressed: viewModel.increment,
             ),
             gapH,
             _DecrementButton(
+              key: CounterView.decrementButtonKey,
               onPressed: viewModel.decrement,
             )
           ],
